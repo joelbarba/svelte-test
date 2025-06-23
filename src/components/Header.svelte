@@ -7,6 +7,13 @@
     children: Snippet
   }>();
   // let { name, age = undefined }: { name: string, age?: number } = $props();
+
+
+  // $effect(() => {
+  //   // Will run when `name` or `username` changes
+  //   console.log(`effect`, name, username);
+  //   return () => { console.log(`before re-run`, name); };
+  // });
 </script>
 
 <div class="header">

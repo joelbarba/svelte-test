@@ -1,5 +1,6 @@
 <script lang="ts">
   import Header from '../components/Header.svelte';
+  import { fly } from 'svelte/transition';
   let username = 'joel.barba';
   let name = $state('Joel');
   let age = $state(30);
@@ -26,6 +27,8 @@
   });
 
   let colors = $state(['red', 'green', 'blue', 'yellow', 'purple']);
+
+  $inspect(name);
 </script>
 
 <Header {username} {name}>
@@ -49,6 +52,7 @@
 
   <p>The status is {status}</p>
   <button onclick={toggle}>Change Status</button>
+  <button onclick={() => name += '+'}>Change Name</button>
 
   <ol>
     {#each colors as color}
@@ -68,7 +72,7 @@
         <button type="button" onclick={() => formState.step = 2}>Next</button>
       </div>
     {:else if formState.step === 2}
-      <div>
+      <div transition:fly={{ x: 100, duration: 500, opacity: 0.5 }}>
         <label>Age: <input type="number" bind:value={formState.age} /></label>
         <button type="button" onclick={() => formState.step = 3}>Next</button>
       </div>
